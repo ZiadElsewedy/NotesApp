@@ -12,7 +12,7 @@ final String date;
     return  GestureDetector(
       onTap: (){Navigator.pushNamed(context, "EditNoteView");},
       child: Container(
-        padding: EdgeInsets.only(top: 24 , bottom: 24 , left: 10 ,),
+        padding: const EdgeInsets.only(top: 24 , bottom: 24 , left: 10 ,),
         decoration: BoxDecoration(
           color: const Color(0xFFFFEAA9),
           borderRadius: BorderRadius.circular(16),

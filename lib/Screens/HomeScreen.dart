@@ -13,16 +13,16 @@ class NotesView extends StatelessWidget {
         showModalBottomSheet(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
           context: context, builder: (context){
-          return AddNote();
+          return const AddNote();
         });
       } ,
       child: Icon(Icons.add , color: Colors.white,), elevation: 10 , backgroundColor: Color.fromARGB(255, 95, 115, 130),),
 
       appBar: AppBar(
-        title: CustomAppbar()
+        title: CustomAppbar(Appbartitle: "Notes",icon: Icons.search,ontap: (){},)
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(right: 7 , left: 7 , top: 10 , bottom: 5),
+      body: const Padding(
+        padding: EdgeInsets.only(right: 7 , left: 7 , top: 10 , bottom: 5),
         child: SizedBox(
           child: NotesListView()
           ),
