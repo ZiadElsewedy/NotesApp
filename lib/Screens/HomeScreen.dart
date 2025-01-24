@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notesapp/widgets/CustomAppBar.dart';
-import 'package:notesapp/widgets/NoteWidget.dart';
+import 'package:notesapp/widgets/ListviewBuilder.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
@@ -12,12 +12,10 @@ class NotesView extends StatelessWidget {
         title: CustomAppbar()
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            NoteWidegt(Title: 'Flutter Project',Subtitle: 'today tasks ............................', date: 'may  2045',)
-          ],
-        ),
+        padding: const EdgeInsets.only(right: 15 , left: 15 , top: 10 ),
+        child: SizedBox(
+          child: NotesListView()
+          ),
       ),
     );
   }
