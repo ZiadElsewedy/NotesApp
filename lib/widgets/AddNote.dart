@@ -15,9 +15,11 @@ class AddNote extends StatelessWidget {
           ),
           Center(child: Text('Create Note' , style: TextStyle(fontWeight: FontWeight.bold , fontSize: 22),)),
           SizedBox(
-            height: 32,
+            height: 30,
           ),
-          Custom_Text_Field(hintText: 'Add title', Text: 'Title', icon: Icons.text_format,color: const Color.fromARGB(255, 193, 193, 193),)
+          Custom_Text_Field(hintText: 'Add title', Text: 'Title', icon: Icons.text_format,color: const Color.fromARGB(255, 193, 193, 193), MaxLines: 1,),
+          SizedBox(height: 25,),
+          Custom_Text_Field(hintText: 'Content', Text: 'Add content', icon: Icons.text_format,color: const Color.fromARGB(255, 193, 193, 193), MaxLines: 6,)
         ],
       ),
     );
