@@ -12,7 +12,7 @@ final String? date;
     return  Container(
       
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        color: const Color(0xFFFFEAA9),
         borderRadius: BorderRadius.circular(16),
       
       ),
@@ -20,10 +20,15 @@ final String? date;
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ListTile(
-            title: Text(Title!,style: TextStyle(fontSize: 35  , color: Colors.black ),),
-            subtitle: Text(Subtitle!,style: TextStyle(fontSize: 20 , color: Colors.black  ),),
-            trailing: IconButton(onPressed: (){} , icon: Icon(Icons.delete , color: Colors.black,))),
-          Text(date! , style: TextStyle(color: Colors.black54 , fontWeight:  FontWeight.bold , fontSize: 15),) ,
+            title: Text(Title!,style: TextStyle(fontSize: 28  , color: Colors.black ),),
+            subtitle: Text(Subtitle!,style: TextStyle(fontSize: 20 , color: Colors.black.withOpacity(0.4)  ),),
+            trailing: IconButton(onPressed: (){} , icon: Icon(Icons.delete , color: Colors.black,))
+            ),
+          
+          Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: Text(date! , style: TextStyle(color: Colors.black54 , fontWeight:  FontWeight.bold , fontSize: 15),),
+          ) ,
         ],
         
       ) ,

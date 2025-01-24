@@ -15,7 +15,7 @@ class NotesView extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            NoteWidegt(Title: 'zoz',Subtitle: 'today tasks ............................', date: 'may  2045',)
+            NoteWidegt(Title: 'Flutter Project',Subtitle: 'today tasks ............................', date: 'may  2045',)
           ],
         ),
       ),
