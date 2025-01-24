@@ -8,12 +8,18 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){} , child: Icon(Icons.add , color: Colors.white,), elevation: 10 , backgroundColor: Color.fromARGB(255, 95, 115, 130),),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        showModalBottomSheet(context: context, builder: (context){
+          return Container();
+        });
+      } ,
+      child: Icon(Icons.add , color: Colors.white,), elevation: 10 , backgroundColor: Color.fromARGB(255, 95, 115, 130),),
+
       appBar: AppBar(
         title: CustomAppbar()
       ),
       body: Padding(
-        padding: const EdgeInsets.only(right: 7 , left: 7 , top: 10 ),
+        padding: const EdgeInsets.only(right: 7 , left: 7 , top: 10 , bottom: 5),
         child: SizedBox(
           child: NotesListView()
           ),

@@ -9,6 +9,7 @@ class CustomAppbar extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        SizedBox(width: 15,),
         Text(
           "Notes",
           style: TextStyle(
