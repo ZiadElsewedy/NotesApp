@@ -14,7 +14,7 @@ class Custom_Text_Field extends StatelessWidget {
   final Function(String)? Onchange;
   final int MaxLines ;
 
-  Custom_Text_Field({super.key, this.Secure = false , required this.hintText, required this.Text, required this.icon ,this.Onchange,  this.color , this.Datatype,  this.MaxLines = 1});
+  Custom_Text_Field({super.key, this.Secure = false , required this.hintText, required this.Text, required this.icon ,this.Onchange,  this.color = Colors.white , this.Datatype,  this.MaxLines = 1});
   
  
    
@@ -31,6 +31,7 @@ class Custom_Text_Field extends StatelessWidget {
       //     return 'Field is required ';
       //   }
       // } ,
+      
         onChanged: Onchange,
         decoration: InputDecoration(
           
