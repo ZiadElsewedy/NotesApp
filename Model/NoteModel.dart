@@ -4,5 +4,5 @@ class Note {
   final String? Date ;
   final int? color;
 
-  Note(this.color, {required this.Title, required this.Subtitle, required this.Date}); 
+  Note({required this.color, required this.Title, required this.Subtitle, required this.Date}); 
 }
