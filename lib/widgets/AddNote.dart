@@ -7,26 +7,31 @@ import 'package:notesapp/widgets/ANForm.dart';
 class AddNote extends StatelessWidget {
    AddNote({super.key});
   @override
+
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(14.0),
-      child: BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
-        listener: (context, state) {
-          if (state is AddNoteCubitFailer) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(state.ErrorMessage),
-            ));
-          }
-          if (state is AddNoteCubitSucsses) {
-            Navigator.pop(context);
-          }
-        },
-        builder: (context, state) {
-          return ModalProgressHUD(
-            
-            inAsyncCall: state is  AddNoteCubitLoading ? true : false,
-            child: const AddNoteForm());
-        },
+    return BlocProvider(
+      create: (context) => AddNoteCubitCubit(),
+      
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
+          listener: (context, state) {
+            if (state is AddNoteCubitFailer) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(state.ErrorMessage),
+              ));
+            }
+            if (state is AddNoteCubitSucsses) {
+              Navigator.pop(context);
+            }
+          },
+          builder: (context, state) {
+            return ModalProgressHUD(
+              
+              inAsyncCall: state is  AddNoteCubitLoading ? true : false,
+              child: const AddNoteForm());
+          },
+        ),
       ),
     );
   }
