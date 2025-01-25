@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notesapp/Cubits/AddNoteCubit/cubit/add_note_cubit_cubit.dart';
 import 'package:notesapp/widgets/ANForm.dart';
 
@@ -24,9 +23,12 @@ class AddNote extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: const AddNoteForm(),
+          return AbsorbPointer(
+            absorbing: state is AddNoteCubitLoading ? true : false,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: const AddNoteForm(),
+            ),
           );
         },
       ),

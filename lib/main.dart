@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:notesapp/Cubits/AddNoteCubit/cubit/add_note_cubit_cubit.dart';
 import 'package:notesapp/Model/Note_Model.dart';
 import 'package:notesapp/Screens/EditNotesView.dart';
 import 'package:notesapp/Screens/HomeScreen.dart';
