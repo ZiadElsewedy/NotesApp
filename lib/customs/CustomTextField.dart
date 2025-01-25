@@ -12,9 +12,10 @@ class Custom_Text_Field extends StatelessWidget {
   final bool Secure;
   final TextInputType? Datatype;
   final Function(String)? Onchange;
+  final void Function(String?)? OnSaved;
   final int MaxLines ;
 
-  Custom_Text_Field({super.key, this.Secure = false , required this.hintText, required this.Text, required this.icon ,this.Onchange,  this.color = Colors.white , this.Datatype,  this.MaxLines = 1});
+  Custom_Text_Field({super.key, this.Secure = false , required this.hintText, required this.Text, required this.icon ,this.Onchange,  this.color = Colors.white , this.Datatype,  this.MaxLines = 1, this.OnSaved});
   
  
    
@@ -22,15 +23,16 @@ class Custom_Text_Field extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return  TextFormField(
+      onSaved: OnSaved,
       maxLines: MaxLines,
       selectionHeightStyle: BoxHeightStyle.includeLineSpacingTop,
       obscureText: Secure ,
       keyboardType: Datatype,
-      // validator: (data){
-      //   if (data!.isEmpty) {
-      //     return 'Field is required ';
-      //   }
-      // } ,
+      validator: (data){
+        if (data?.isEmpty ?? true) {
+          return 'Field is required ';
+        }
+      } ,
       
         onChanged: Onchange,
         decoration: InputDecoration(
