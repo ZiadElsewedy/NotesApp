@@ -26,7 +26,8 @@ class AddNote extends StatelessWidget {
           return AbsorbPointer(
             absorbing: state is AddNoteCubitLoading ? true : false,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.only(right: 16, left: 16, top: 16,
+               bottom: MediaQuery.of(context).viewInsets.bottom),
               child: const AddNoteForm(),
             ),
           );

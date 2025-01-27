@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notesapp/widgets/AddNoteBottomSheet.dart';
+import 'package:notesapp/Screens/AddNoteBottomSheet.dart';
 import 'package:notesapp/customs/CustomAppBar.dart';
 import 'package:notesapp/widgets/ListviewBuilder.dart';
 
@@ -9,6 +9,7 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset:false ,
       floatingActionButton: FloatingActionButton(onPressed: (){
         showModalBottomSheet(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
