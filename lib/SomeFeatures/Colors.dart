@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:notesapp/Cubits/AddNoteCubit/cubit/add_note_cubit_cubit.dart';
 
 String getCurrentFormattedDateTime() {
   return DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
@@ -65,6 +67,9 @@ class _ColorListViewState extends State<ColorListView> {
               onTap: () {
                 setState(() {
                   selectedIndex = index; // Update selected index
+                  BlocProvider.of<AddNoteCubitCubit>(context).SelectedColor = color;
+                      
+                    
                 });
               },
             ),
