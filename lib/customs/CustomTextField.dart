@@ -14,8 +14,9 @@ class Custom_Text_Field extends StatelessWidget {
   final Function(String)? Onchange;
   final void Function(String?)? OnSaved;
   final int MaxLines ;
+  final TextEditingController? controller;
 
-  Custom_Text_Field({super.key, this.Secure = false , required this.hintText, required this.Text, required this.icon ,this.Onchange,  this.color = Colors.white , this.Datatype,  this.MaxLines = 1, this.OnSaved});
+  Custom_Text_Field({super.key, this.Secure = false , required this.hintText, required this.Text, required this.icon ,this.Onchange,  this.color = Colors.white , this.Datatype,  this.MaxLines = 1, this.OnSaved, this.controller});
   
  
    
@@ -23,6 +24,7 @@ class Custom_Text_Field extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return  TextFormField(
+      controller: controller,
       onSaved: OnSaved,
       maxLines: MaxLines,
       selectionHeightStyle: BoxHeightStyle.includeLineSpacingTop,

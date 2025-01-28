@@ -5,7 +5,7 @@ class CustomAppbar extends StatelessWidget {
   const CustomAppbar({super.key, required this.Appbartitle, required this.icon, required this.ontap, });
 final String Appbartitle ; 
 final IconData icon ; 
-final Function ontap;
+final VoidCallback ontap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,7 +20,8 @@ final Function ontap;
               color: Colors.white),
         ),
         const Spacer(),
-        SearchIcon(icon:icon,ontap:ontap ,),
+
+        SearchIcon(icon:icon,onPress:ontap ),
       ],
     );
   }
