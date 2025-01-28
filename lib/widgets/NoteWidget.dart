@@ -7,6 +7,7 @@ class NoteWidget extends StatelessWidget {
  final NoteModel Note ;
 
   const NoteWidget({super.key, required this.Note });
+
   @override
   Widget build(BuildContext context) {
     
@@ -33,7 +34,10 @@ class NoteWidget extends StatelessWidget {
                 ],
               )
               ,
-              trailing:  IconButton(onPressed: (){} , icon: Icon(Icons.delete , color: Colors.black,))
+              trailing:  IconButton(onPressed: (){
+                Note.delete();
+                
+                   } , icon: Icon(Icons.delete , color: Colors.black,))
               ),
             
             Padding(
