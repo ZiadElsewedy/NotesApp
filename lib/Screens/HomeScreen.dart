@@ -14,6 +14,11 @@ class NotesView extends StatefulWidget {
 }
 class _NotesViewState extends State<NotesView> {
   @override
+   void initState() {
+    super.initState();
+    context.read<NotesCubitCubit>().FetchAllNotes();
+    
+  }
 
   Widget build(BuildContext context) {
     return BlocProvider(

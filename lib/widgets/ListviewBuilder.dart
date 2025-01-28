@@ -4,10 +4,19 @@ import 'package:notesapp/Cubits/Note/notes_cubit_cubit.dart';
 import 'package:notesapp/Model/Note_Model.dart';
 import 'package:notesapp/widgets/NoteWidget.dart';
 
-class NotesListView extends StatelessWidget {
+class NotesListView extends StatefulWidget {
   const NotesListView({super.key});
 
   @override
+  State<NotesListView> createState() => _NotesListViewState();
+}
+
+class _NotesListViewState extends State<NotesListView> {
+  @override
+     void initState() {
+    super.initState();
+    context.read<NotesCubitCubit>().FetchAllNotes();
+     }
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubitCubit, NotesCubitState>(
       builder: (context, state) {
@@ -26,7 +35,6 @@ class NotesListView extends StatelessWidget {
             },
           );
         } else if (state is NotesCubitInitial) {
-          context.read<NotesCubitCubit>().FetchAllNotes();
           return const Center(child: CircularProgressIndicator());
         } else {
           return const Center(child: Text('No notes available.'));
