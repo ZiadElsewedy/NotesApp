@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/Model/Note_Model.dart';
 
 
-class NoteWidegt extends StatelessWidget {
-  const NoteWidegt({super.key, required this.Title, required  this.Subtitle, required   this.date});
-final String  Title;
-final String Subtitle;
-final String date;
+class NoteWidget extends StatelessWidget {
+ 
+ final NoteModel Note ;
+
+  const NoteWidget({super.key, required this.Note });
   @override
   Widget build(BuildContext context) {
     
@@ -22,12 +23,12 @@ final String date;
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: Text(Title,style: TextStyle(fontSize: 28  , color: Colors.black ),),
+              title: Text(Note.title,style: TextStyle(fontSize: 28  , color: Colors.black ),),
               subtitle: Stack(
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 16 ,),
-                    child:  Text(Subtitle,style: TextStyle(fontSize: 17 , color: Colors.black.withOpacity(0.4)  ),),
+                    child:  Text(Note.subtitle,style: TextStyle(fontSize: 17 , color: Colors.black.withOpacity(0.4)  ),),
                   ),
                 ],
               )
@@ -37,7 +38,7 @@ final String date;
             
             Padding(
               padding: const EdgeInsets.all(14.0),
-              child: Text(date , style: TextStyle(color: Colors.black54 , fontWeight:  FontWeight.bold , fontSize: 15),),
+              child: Text(Note.date , style: TextStyle(color: Colors.black54 , fontWeight:  FontWeight.bold , fontSize: 15),),
             ) ,
           ],
           

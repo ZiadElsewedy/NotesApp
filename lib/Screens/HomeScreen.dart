@@ -5,13 +5,19 @@ import 'package:notesapp/Screens/AddNoteBottomSheet.dart';
 import 'package:notesapp/customs/CustomAppBar.dart';
 import 'package:notesapp/widgets/ListviewBuilder.dart';
 
-class NotesView extends StatelessWidget {
+class NotesView extends StatefulWidget {
   const NotesView({super.key});
   static String id = 'NotesView';
+
   @override
+  State<NotesView> createState() => _NotesViewState();
+}
+class _NotesViewState extends State<NotesView> {
+  @override
+
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NotesCubitCubit()..FetchAllNotes(),
+      create: (context) => NotesCubitCubit(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         floatingActionButton: FloatingActionButton(

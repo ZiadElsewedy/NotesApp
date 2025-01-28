@@ -17,7 +17,7 @@ class AddNoteForm extends StatefulWidget {
 class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title, Content;
+  String? TitleNote , Content;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -43,8 +43,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
               icon: Icons.text_format,
               color: const Color.fromARGB(255, 193, 193, 193),
               MaxLines: 1,
-              OnSaved: (Value) {
-                title = Value;
+              OnSaved: (value) {
+                TitleNote = value;
               },
             ),
             const SizedBox(
@@ -56,8 +56,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 icon: Icons.content_paste_go_sharp,
                 color: const Color.fromARGB(255, 193, 193, 193),
                 MaxLines: 6,
-                OnSaved: (Value) {
-                  Content = Value;
+                OnSaved: (value) {
+                  Content = value;
                 }),
             const SizedBox(
               height: 20,
@@ -66,17 +66,16 @@ class _AddNoteFormState extends State<AddNoteForm> {
               builder: (context, state) {
                 return CustomButton(
                     isloading:state is  AddNoteCubitLoading ? true : false,
-                    Textname: "Add",
+                    Textname: "Add Note",
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
                         NoteModel note = NoteModel(
                             color: Colors.blue.value,
-                            title: title!,
+                            title: TitleNote!,
                             subtitle: Content!,
                             date: DateTime.now().toString());
-                        BlocProvider.of<AddNoteCubitCubit>(context)
-                            .AddNote(note);
+                        BlocProvider.of<AddNoteCubitCubit>(context).AddNote(note);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                       }
