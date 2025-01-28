@@ -1,14 +1,6 @@
+import 'package:flutter/material.dart';
 
- import 'package:flutter/material.dart';
-class showOverlay extends StatelessWidget {
-  const showOverlay(BuildContext context, {super.key, required this.message});
-final String message;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: _showOverlay(context, message)));
-  }
-}
-_showOverlay(BuildContext context, String message) {
+void showOverlay(BuildContext context, String message) {
   OverlayState? overlayState = Overlay.of(context);
   OverlayEntry overlayEntry = OverlayEntry(
     builder: (context) => Stack(
@@ -16,7 +8,7 @@ _showOverlay(BuildContext context, String message) {
         // Semi-transparent background
         Positioned.fill(
           child: AnimatedOpacity(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             opacity: 1.0,
             child: Container(
               color: Colors.black.withOpacity(0.5),
@@ -26,7 +18,7 @@ _showOverlay(BuildContext context, String message) {
         // Centered message container with icon
         Center(
           child: AnimatedOpacity(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             opacity: 1.0,
             child: Container(
               padding: const EdgeInsets.all(24),
@@ -37,7 +29,7 @@ _showOverlay(BuildContext context, String message) {
                   BoxShadow(
                     color: Colors.black.withOpacity(0.2),
                     blurRadius: 12,
-                    offset: Offset(0, 6),
+                    offset: const Offset(0, 6),
                   ),
                 ],
               ),
@@ -48,7 +40,7 @@ _showOverlay(BuildContext context, String message) {
                   CircleAvatar(
                     backgroundColor: Colors.green.withOpacity(0.1),
                     radius: 30,
-                    child: Icon(
+                    child: const Icon(
                       Icons.check_circle,
                       color: Colors.green,
                       size: 48,
@@ -59,13 +51,13 @@ _showOverlay(BuildContext context, String message) {
                   Text(
                     message,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
-                      decoration: TextDecoration.none, // Ensures no line appears
+                      decoration: TextDecoration.none,
                     ),
-                    textScaleFactor: 1.0, // Removes any unintended scaling
+                    textScaleFactor: 1.0,
                   ),
                 ],
               ),
@@ -76,10 +68,11 @@ _showOverlay(BuildContext context, String message) {
     ),
   );
 
+  // Insert the overlay
   overlayState?.insert(overlayEntry);
 
   // Automatically remove the overlay after 2 seconds
-  Future.delayed(Duration(seconds: 2), () {
+  Future.delayed(const Duration(seconds: 2), () {
     overlayEntry.remove();
-    });
-  }
+  });
+}

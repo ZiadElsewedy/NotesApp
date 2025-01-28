@@ -46,7 +46,8 @@ class _EditNoteViewState extends State<EditNoteView> {
             widget.noteModel.save();
             context.read<NotesCubitCubit>().FetchAllNotes();
             Navigator.pop(context);
-            showOverlay(context, message: 'Note edited successfully!' );
+            
+            showOverlay(context, 'Note edited successfully!' );
           },
         ),
       ),
@@ -87,7 +88,7 @@ class _EditNoteViewState extends State<EditNoteView> {
                   widget.noteModel.save();
                   context.read<NotesCubitCubit>().FetchAllNotes();
                   Navigator.pop(context);
-                 showOverlay(context, message: 'Note edited successfully!');
+                 showOverlay(context, 'Note edited successfully!');
                 },
               ),
             ),
