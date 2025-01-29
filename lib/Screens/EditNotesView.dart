@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/Cubits/Note/notes_cubit_cubit.dart';
 import 'package:notesapp/SomeFeatures/showOverlay.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +10,6 @@ import 'package:notesapp/customs/customButton.dart';
 
 class EditNoteView extends StatefulWidget {
  EditNoteView({super.key, required this.noteModel});
-static  String id = 'EditNoteView';
  NoteModel noteModel;
 
   State<EditNoteView> createState() => _EditNoteViewState();
@@ -77,7 +77,9 @@ class _EditNoteViewState extends State<EditNoteView> {
                 content = value;
               },
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 20),
+            ColorListView(noteModel: widget.noteModel,),
+            SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: CustomButton(
@@ -101,4 +103,75 @@ class _EditNoteViewState extends State<EditNoteView> {
 
 
 
+class ColorItem extends StatelessWidget {
+  final Color color;
+  final bool isSelected;
+  final VoidCallback onTap;
 
+  const ColorItem({
+    super.key,
+    required this.color,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap, // Handle tap to toggle selection
+      child: CircleAvatar(
+        radius: 20,
+        backgroundColor: color,
+        child: isSelected
+            ? const Icon(
+                Icons.check,
+                color: Color.fromARGB(255, 255, 255, 255),
+                size: 27,
+              )
+            : null, // Show check icon if selected
+      ),
+    );
+  }
+}
+
+class ColorListView extends StatefulWidget {
+  const ColorListView({super.key, required this.noteModel});
+final NoteModel noteModel;
+  @override
+  State<ColorListView> createState() => _ColorListViewState();
+}
+
+class _ColorListViewState extends State<ColorListView> {
+  int selectedIndex = -1; // Tracks the selected color index
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: ListView.builder(
+        itemCount: Colors.primaries.length, // Use available primary colors
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final color = Colors.primaries[index];
+          final isSelected = index == selectedIndex;
+
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ColorItem(
+              color: color,
+              isSelected: isSelected,
+              onTap: () {
+                setState(() {
+                  selectedIndex = index; // Update selected index
+                  widget.noteModel.color = color.value; // Update note color
+                      
+                    
+                });
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
