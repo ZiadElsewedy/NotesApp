@@ -40,7 +40,7 @@ class _EditNoteViewState extends State<EditNoteView> {
         title: CustomAppbar(
           Appbartitle: 'Edit Note',
           icon: Icons.done_all,
-          ontap: () {
+          onTap: () {
             widget.noteModel.title = title ?? widget.noteModel.title;
             widget.noteModel.subtitle = content ?? widget.noteModel.subtitle;
             widget.noteModel.save();
@@ -51,50 +51,53 @@ class _EditNoteViewState extends State<EditNoteView> {
           },
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(right: 7, left: 7, top: 10, bottom: 5),
-        child: Column(
-          children: [
-            SizedBox(height: 30),
-            Custom_Text_Field(
-              hintText: 'Title',
-              Text: 'Edit Title',
-              icon: Icons.title,
-              MaxLines: 2,
-              controller: titleController,
-              Onchange: (value) {
-                title = value;
-              },
-            ),
-            SizedBox(height: 20),
-            Custom_Text_Field(
-              hintText: 'Content',
-              Text: 'Edit Content',
-              icon: Icons.edit_note_rounded,
-              MaxLines: 7,
-              controller: contentController,
-              Onchange: (value) {
-                content = value;
-              },
-            ),
-            SizedBox(height: 20),
-            ColorListView(noteModel: widget.noteModel,),
-            SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: CustomButton(
-                Textname: 'Done',
-                onTap: () {
-                  widget.noteModel.title = title ?? widget.noteModel.title;
-                  widget.noteModel.subtitle = content ?? widget.noteModel.subtitle;
-                  widget.noteModel.save();
-                  context.read<NotesCubitCubit>().FetchAllNotes();
-                  Navigator.pop(context);
-                 showOverlay(context, 'Note edited successfully!');
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: EdgeInsets.only(right: 7, left: 7, top: 10, bottom: 5),
+          child: Column(
+            children: [
+              SizedBox(height: 30),
+              Custom_Text_Field(
+                hintText: 'Title',
+                Text: 'Edit Title',
+                icon: Icons.title,
+                MaxLines: 2,
+                controller: titleController,
+                Onchange: (value) {
+                  title = value;
                 },
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              Custom_Text_Field(
+                hintText: 'Content',
+                Text: 'Edit Content',
+                icon: Icons.edit_note_rounded,
+                MaxLines: 7,
+                controller: contentController,
+                Onchange: (value) {
+                  content = value;
+                },
+              ),
+              SizedBox(height: 20),
+              ColorListView(noteModel: widget.noteModel,),
+              SizedBox(height: 40),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: CustomButton(
+                  Textname: 'Done',
+                  onTap: () {
+                    widget.noteModel.title = title ?? widget.noteModel.title;
+                    widget.noteModel.subtitle = content ?? widget.noteModel.subtitle;
+                    widget.noteModel.save();
+                    context.read<NotesCubitCubit>().FetchAllNotes();
+                    Navigator.pop(context);
+                   showOverlay(context, 'Note edited successfully!');
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

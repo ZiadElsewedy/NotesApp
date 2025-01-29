@@ -5,8 +5,8 @@ import 'package:notesapp/Model/Note_Model.dart';
 import 'package:notesapp/widgets/NoteWidget.dart';
 
 class NotesListView extends StatefulWidget {
-  const NotesListView({super.key});
-
+  const NotesListView({super.key, required this.Notes});
+ final List<NoteModel> Notes;
   @override
   State<NotesListView> createState() => _NotesListViewState();
 }
@@ -38,7 +38,7 @@ class _NotesListViewState extends State<NotesListView> {
           return const Center(child: CircularProgressIndicator());
         } else {
           return const Center(child: Text('No notes available.'));
-        }
+        } 
       },
     );
   }

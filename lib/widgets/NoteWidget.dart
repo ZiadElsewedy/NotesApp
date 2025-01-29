@@ -9,7 +9,7 @@ class NoteWidget extends StatelessWidget {
  
  final NoteModel Note ;
 
-  const NoteWidget({super.key, required this.Note });
+  const NoteWidget({super.key, required this.Note, });
 
   @override
   Widget build(BuildContext context) {
